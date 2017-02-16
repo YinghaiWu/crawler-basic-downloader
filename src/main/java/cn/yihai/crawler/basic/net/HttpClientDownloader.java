@@ -23,11 +23,13 @@ public class HttpClientDownloader {
 	private HttpClientGenerator httpClientGenerator;
 	private boolean autoReleaseConnect = false;
 
-	public HttpClientDownloader() {
+	public HttpClientDownloader(boolean autoReleaseConnect) {
+		this.autoReleaseConnect = autoReleaseConnect;
 		this.httpClientGenerator = new BasicHttpClientGenerator();
 	}
 
-	public HttpClientDownloader(int poolSize) {
+	public HttpClientDownloader(boolean autoReleaseConnect, int poolSize) {
+		this.autoReleaseConnect = autoReleaseConnect;
 		PoolingHttpClientGenerator pcg = new PoolingHttpClientGenerator();
 		pcg.setPoolSize(poolSize);
 		this.httpClientGenerator = pcg;

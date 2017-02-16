@@ -1,7 +1,6 @@
 package cn.yihai.crawler.basic.net;
 
 import java.util.HashMap;
-import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class Response {
@@ -10,22 +9,22 @@ public class Response {
 	private int statusCode;
 	private boolean needCycleRetry;
 	private String location;
-	private Map<String, String> cookies = new LinkedHashMap<String, String>();
+	private Map<String, String> cookies = new HashMap<String, String>();
 
 	public Request getRequest() {
 		return this.request;
 	}
 
+	public void setRequest(Request request) {
+		this.request = request;
+	}
+	
 	public boolean isNeedCycleRetry() {
 		return this.needCycleRetry;
 	}
 
 	public void setNeedCycleRetry(boolean needCycleRetry) {
 		this.needCycleRetry = needCycleRetry;
-	}
-
-	public void setRequest(Request request) {
-		this.request = request;
 	}
 
 	public int getStatusCode() {
