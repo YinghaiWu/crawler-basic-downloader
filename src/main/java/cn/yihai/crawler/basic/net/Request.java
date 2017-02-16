@@ -7,7 +7,7 @@ import java.util.Map;
 public class Request implements Serializable {
 
 	private static final long serialVersionUID = -1860885627027893044L;
-	
+
 	public static final String STATUS_CODE = "statusCode";
 	public static final String PROXY = "proxy";
 	public static final String POST_REQUES_PAIR = "nameValuePair";
@@ -55,7 +55,7 @@ public class Request implements Serializable {
 	public void setUrl(String url) {
 		this.url = url;
 	}
-	
+
 	public Map<String, Object> getExtras() {
 		return this.extras;
 	}
