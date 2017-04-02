@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Response {
+	
 	private Request request;
 	private String rawText;
 	private int statusCode;
@@ -82,4 +83,5 @@ public class Response {
 		}
 		return cookieValue.toString().trim();
 	}
+
 }

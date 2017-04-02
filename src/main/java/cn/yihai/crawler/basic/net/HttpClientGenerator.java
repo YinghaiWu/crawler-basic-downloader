@@ -24,6 +24,7 @@ import org.apache.http.impl.cookie.BasicClientCookie;
 import org.apache.http.protocol.HttpContext;
 
 public abstract class HttpClientGenerator {
+	
 	protected HttpClientConnectionManager connectionManager;
 
 	public HttpClientGenerator() {

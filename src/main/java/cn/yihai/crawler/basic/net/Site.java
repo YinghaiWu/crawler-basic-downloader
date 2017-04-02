@@ -3,24 +3,24 @@ package cn.yihai.crawler.basic.net;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+
 import org.apache.http.HttpHost;
 
 public class Site {
+	
 	private String domain;
 	private String userAgent;
-	private Map<String, String> defaultCookies = new LinkedHashMap<String, String>();
+	private Map<String, String> defaultCookies = new HashMap<String, String>();
 	private Map<String, Map<String, String>> cookies = new HashMap<String, Map<String, String>>();
 	private String charset;
 	private List<Request> startRequests = new ArrayList<Request>();
 	private int sleepTime = 500;
 	private int timeOut = 5000;
 	private int retryTimes = 0;
-	private static final Set<Integer> DEFAULT_STATUS_CODE_SET = new HashSet<Integer>();
-	private Set<Integer> acceptStatCode = DEFAULT_STATUS_CODE_SET;
+	private Set<Integer> acceptStatCode = new HashSet<Integer>();
 	private Map<String, String> headers = new HashMap<String, String>();
 	private HttpHost httpProxy;
 	private boolean useGzip = true;
@@ -269,4 +269,5 @@ public class Site {
 		}
 		return true;
 	}
+
 }

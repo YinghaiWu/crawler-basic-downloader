@@ -7,7 +7,11 @@ import java.util.Map;
 public class Request implements Serializable {
 
 	private static final long serialVersionUID = -1860885627027893044L;
-
+	
+	public static final String STATUS_CODE = "statusCode";
+	public static final String PROXY = "proxy";
+	public static final String POST_REQUES_TPAIR = "nameValuePair";
+	
 	private String url;
 	private String method = "GET";
 	private Map<String, Object> extras;
@@ -77,6 +81,12 @@ public class Request implements Serializable {
 		this.allowRedirect = allowRedirect;
 	}
 
+	@Override
+	public int hashCode() {
+		return this.url.hashCode();
+	}
+	
+	@Override
 	public boolean equals(Object o) {
 		if (this == o) {
 			return true;
@@ -91,7 +101,4 @@ public class Request implements Serializable {
 		return true;
 	}
 
-	public int hashCode() {
-		return this.url.hashCode();
-	}
 }

@@ -19,6 +19,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class HttpClientDownloader {
+	
 	private static Logger logger = LoggerFactory.getLogger(HttpClientDownloader.class);
 	private HttpClientGenerator httpClientGenerator;
 	private boolean autoReleaseConnect = false;
@@ -42,7 +43,7 @@ public class HttpClientDownloader {
 	public Response download(String url, Site site) throws Exception {
 		Request request = new Request();
 		request.setUrl(url);
-
+		
 		return download(request, site);
 	}
 
@@ -72,7 +73,6 @@ public class HttpClientDownloader {
 			httpResponse = this.httpClientGenerator.getClient(site).execute(httpUriRequest);
 			statusCode = httpResponse.getStatusLine().getStatusCode();
 			request.putExtra("statusCode", Integer.valueOf(statusCode));
-//			Response localResponse;
 			if (acceptStatCode.isEmpty()) {
 				return handleResponse(request, charset, httpResponse);
 			}
@@ -127,7 +127,7 @@ public class HttpClientDownloader {
 		if (site.getHttpProxy() != null) {
 			HttpHost host = site.getHttpProxy();
 			requestConfigBuilder.setProxy(host);
-			request.putExtra("proxy", host);
+			request.putExtra(Request.PROXY, host);
 		}
 		requestBuilder.setConfig(requestConfigBuilder.build());
 		return requestBuilder.build();
@@ -140,7 +140,7 @@ public class HttpClientDownloader {
 		}
 		if (method.equalsIgnoreCase("POST")) {
 			RequestBuilder requestBuilder = RequestBuilder.post();
-			NameValuePair[] nameValuePair = (NameValuePair[]) request.getExtra("nameValuePair");
+			NameValuePair[] nameValuePair = (NameValuePair[]) request.getExtra(Request.POST_REQUES_TPAIR);
 			if ((nameValuePair != null) && (nameValuePair.length > 0)) {
 				requestBuilder.addParameters(nameValuePair);
 			}
